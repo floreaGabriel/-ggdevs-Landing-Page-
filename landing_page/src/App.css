@@ -4,3 +4,89 @@ body {
   font-family: sans-serif;
 }
 
+/* Stilurile mostenite pentru restul aplicatiei */
+.App {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-section {
+  text-align: center;
+}
+
+.hero-section h1 {
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+/* STILURI SPECIFICE DOAR PENTRU MANIFEST */
+.code-container {
+  background-color: #f8f9fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  text-align: left;
+  overflow-x: auto;
+}
+
+.k8s-manifest {
+  color: #24292e;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Culori ORANGE, ALBASTRU si VERDE pentru manifest */
+.yaml-key {
+  color: #31f68d;
+  /* ORANGE pentru keys */
+  font-weight: 600;
+}
+
+.yaml-string {
+  color: #13a7dc;
+  /* ALBASTRU pentru strings */
+}
+
+.yaml-number {
+  color: #e58613;
+  /* VERDE pentru numere */
+}
+
+.yaml-boolean {
+  color: #2dd5e1;
+  /* ORANGE pentru boolean (ca si keys) */
+  font-weight: 600;
+}
+
+.yaml-comment {
+  color: #6a737d;
+  /* Gri pentru comentarii */
+}
+
+.yaml-indent-1 {
+  margin-left: 2em;
+}
+
+.yaml-indent-2 {
+  margin-left: 4em;
+}
+
+.yaml-indent-3 {
+  margin-left: 6em;
+}
+
+/* Culori pentru separatori si alte elemente */
+.k8s-manifest code {
+  color: #24292e;
+}
