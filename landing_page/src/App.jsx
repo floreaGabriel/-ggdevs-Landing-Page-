@@ -4,14 +4,16 @@ import BenefitCard from "./components/BenefitCard";
 import CodeBlock from "./components/CodeBlock";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
+
+
+
 const KubernetesManifest = () => {
   return (
+
+
     <div className="code-container">
       <pre className="k8s-manifest">
         <code>
-          <span className="yaml-comment"># GGDevs Custom Kubernetes CRD</span>
-          <span className="yaml-comment"># Simple, reliable web application deployment</span>
-          {'\n'}
           <span className="yaml-key">apiVersion</span>: <span className="yaml-string">apiextensions.k8s.io/v1</span>
           {'\n'}
           <span className="yaml-key">kind</span>: <span className="yaml-string">CustomResourceDefinition</span>
@@ -78,7 +80,7 @@ function App() {
           <p>
             Our APIs are intuitive, our CLI feels like home, and our docs actually help you get things done. All this, while making sure your clusters run smoothly and cost-effectively.
           </p>
-          <KubernetesManifest />
+          <CodeBlock code={<KubernetesManifest/>}/>
           <p>
             Experience auto-healing, seamless monitoring, and instant rollback. If you break things, roll back with a single command — no drama!
           </p>

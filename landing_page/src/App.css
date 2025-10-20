@@ -29,8 +29,6 @@ body {
 
 /* STILURI SPECIFICE DOAR PENTRU MANIFEST */
 .code-container {
-  background-color: #f8f9fa;
-  border: 1px solid #e1e4e8;
   border-radius: 8px;
   padding: 1.5rem;
   margin: 2rem 0;
