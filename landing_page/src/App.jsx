@@ -64,7 +64,10 @@ const KubernetesManifest = () => {
 function App() {
   return (
 
+
+
     <>
+
       <div className="min-h-screen flex flex-col bg-black">
         <Hero />
         <BenefitCard title="Why Developers Choose GGDevs">
