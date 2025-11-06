@@ -4,6 +4,88 @@ body {
   font-family: sans-serif;
 }
 
+/* Layout pentru sidebar si terminal */
+.app-main-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  padding-top: 2rem;
+}
+
+.app-sidebar {
+  width: 320px;
+  min-width: 280px;
+  max-width: 400px;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  border-right: 1px solid rgba(0, 255, 0, 0.2);
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 80px);
+  resize: horizontal;
+  position: relative;
+}
+
+.app-sidebar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: rgba(0, 255, 0, 0.1);
+  cursor: ew-resize;
+  transition: background 0.3s ease;
+}
+
+.app-sidebar:hover::after {
+  background: rgba(0, 255, 0, 0.3);
+}
+
+.app-terminal-area {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .app-sidebar {
+    width: 280px;
+    min-width: 250px;
+  }
+  
+  .app-terminal-area {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-main-layout {
+    flex-direction: column;
+    padding-top: 1rem;
+  }
+  
+  .app-sidebar {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+    resize: none;
+  }
+  
+  .app-terminal-area {
+    padding: 1rem;
+  }
+}
+
 /* Stilurile mostenite pentru restul aplicatiei */
 .App {
   padding: 2rem;

@@ -1,90 +1,298 @@
 /* src/Landing.css */
 
+/* Landing Page Styles */
 .landing-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #1a1a1a 100%);
+  color: #ffffff;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  justify-content: center;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
-  color: #fff;
-  padding: 0 1rem;
+  justify-content: center;
 }
 
-.hero {
-  text-align: center;
-  margin-bottom: 2rem;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem 0.5rem;
+  }
 }
 
-.hero h1 {
-  font-size: 3rem;
-  font-weight: bold;
+@media (max-width: 480px) {
+  .main-content {
+    padding: 0.5rem 0.25rem;
+  }
 }
 
-.hero p {
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
+/* Selection */
+::selection {
+  background: rgba(0, 255, 0, 0.3);
+  color: #ffffff;
 }
 
-.hero button {
-  margin-top: 1.5rem;
-  font-size: 1.1rem;
-  padding: 0.7em 2em;
-  background: #fff;
-  color: #2563eb;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+::-moz-selection {
+  background: rgba(0, 255, 0, 0.3);
+  color: #ffffff;
 }
 
-.hero button:hover {
-  background: #2563eb;
-  color: #fff;
-  border: 2px solid #fff;
-}
-
-.features {
-  margin-bottom: 2rem;
+/* Hero Section */
+.hero-section {
+  padding: 4rem 0 2rem;
   text-align: center;
 }
 
-.features h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.features ul {
-  list-style: none;
-  padding: 0;
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1.5rem;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #00ff00 0%, #00cc00 50%, #009900 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
 }
 
-.features li {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
+.highlight {
+  position: relative;
+  display: inline-block;
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-.cta {
-  text-align: center;
+@keyframes glow {
+  from {
+    filter: brightness(1);
+    text-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+  }
+
+  to {
+    filter: brightness(1.2);
+    text-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #cccccc;
+  margin: 0;
+  line-height: 1.8;
+}
+
+.hero-subtitle code {
+  background: rgba(0, 255, 0, 0.1);
+  color: #00ff00;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* Info Section */
+.info-section {
+  padding: 4rem 0;
   margin-top: 2rem;
 }
 
-.cta button {
-  font-size: 1rem;
-  padding: 0.6em 1.5em;
-  background: #fff;
-  color: #2563eb;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.cta button:hover {
-  background: #2563eb;
-  color: #fff;
-  border: 2px solid #fff;
+.info-card {
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.05) 0%, rgba(0, 255, 0, 0.02) 100%);
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.info-card:hover::before {
+  opacity: 1;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 255, 0, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 255, 0, 0.2);
+}
+
+.info-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.3));
+}
+
+.info-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00ff00;
+  margin: 0 0 1rem;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.info-card p {
+  font-size: 1rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 3rem 0 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-subtitle code {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .info-section {
+    padding: 3rem 0;
+    margin-top: 1rem;
+  }
+
+  .info-grid {
+    gap: 1.5rem;
+  }
+
+  .info-card {
+    padding: 1.5rem;
+  }
+
+  .info-icon {
+    font-size: 2.5rem;
+  }
+
+  .info-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .info-card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 2rem 0 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .info-section {
+    padding: 2rem 0;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .info-card {
+    padding: 1.25rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 255, 0, 0.3);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: rgba(0, 255, 0, 0.3);
+  color: #ffffff;
+}
+
 
 /* Responsive */
 @media (max-width: 600px) {
@@ -96,4 +304,3 @@
     font-size: 1.3rem;
   }
 }
-
