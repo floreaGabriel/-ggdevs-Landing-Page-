@@ -1,0 +1,474 @@
+/* Terminal Container Styles */
+.terminal-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    cursor: text;
+}
+
+/* Terminal Window */
+.terminal-window {
+    background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+    border-radius: 12px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(0, 255, 0, 0.1),
+        inset 0 0 100px rgba(0, 255, 0, 0.03);
+    overflow: hidden;
+    min-height: 600px;
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+/* Focus highlight effect */
+.terminal-window.focused {
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 3px rgba(0, 255, 0, 0.6),
+        inset 0 0 100px rgba(0, 255, 0, 0.1);
+    animation: focusPulse 1s ease-out;
+}
+
+@keyframes focusPulse {
+    0% {
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.5),
+            0 0 0 3px rgba(0, 255, 0, 0.8),
+            0 0 30px rgba(0, 255, 0, 0.6),
+            inset 0 0 100px rgba(0, 255, 0, 0.15);
+    }
+
+    100% {
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.5),
+            0 0 0 3px rgba(0, 255, 0, 0.6),
+            inset 0 0 100px rgba(0, 255, 0, 0.1);
+    }
+}
+
+/* Terminal Header (macOS style) */
+.terminal-header {
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+    position: relative;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.control-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.control-btn.close {
+    background: #ff5f56;
+    box-shadow: 0 0 5px rgba(255, 95, 86, 0.5);
+}
+
+.control-btn.minimize {
+    background: #ffbd2e;
+    box-shadow: 0 0 5px rgba(255, 189, 46, 0.5);
+}
+
+.control-btn.maximize {
+    background: #27c93f;
+    box-shadow: 0 0 5px rgba(39, 201, 63, 0.5);
+}
+
+.control-btn:hover {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
+
+.terminal-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #888;
+    font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.terminal-spacer {
+    flex: 1;
+}
+
+/* Terminal Body */
+.terminal-body {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #00ff00;
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+.terminal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 0, 0.3);
+    border-radius: 4px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 0, 0.5);
+}
+
+/* Terminal Output */
+.terminal-output {
+    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.output-line {
+    margin: 0.3rem 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: inherit;
+}
+
+/* Command Line */
+.command-line {
+    display: flex;
+    gap: 0.5rem;
+    color: #cccccc;
+}
+
+.prompt {
+    color: #00ff00;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    flex-shrink: 0;
+}
+
+.command-text {
+    color: #ffffff;
+}
+
+/* Output Types */
+.error-output {
+    color: #ff5555;
+    text-shadow: 0 0 5px rgba(255, 85, 85, 0.3);
+}
+
+.info-output {
+    color: #cccccc;
+}
+
+.suggestions-output {
+    color: #888888;
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+    padding: 0.5rem;
+    background: rgba(0, 255, 0, 0.05);
+    border-left: 2px solid rgba(0, 255, 0, 0.3);
+    border-radius: 4px;
+}
+
+.welcome-banner {
+    color: #00ff00;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    margin: 1rem 0;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
+
+    to {
+        text-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+    }
+}
+
+/* LS Output */
+.ls-output {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.ls-item {
+    min-width: 120px;
+    font-weight: 500;
+}
+
+.ls-item.directory {
+    color: #5555ff;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(85, 85, 255, 0.3);
+}
+
+.ls-item.executable {
+    color: #cc66ff;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(204, 102, 255, 0.4);
+}
+
+.ls-item.file {
+    color: #cccccc;
+}
+
+/* Launch Output */
+.launch-output {
+    margin: 0.5rem 0;
+}
+
+.launch-message {
+    color: #00ff00;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.launch-description {
+    color: #888888;
+    margin: 0.3rem 0;
+    font-style: italic;
+}
+
+.launch-redirect {
+    color: #5555ff;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+/* Terminal Input */
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    position: relative;
+}
+
+.input-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-text {
+    color: #ffffff;
+    font-family: inherit;
+    font-size: inherit;
+    white-space: pre;
+}
+
+.terminal-input-hidden {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cursor-blink {
+    color: #00ff00;
+    animation: blink 1s step-end infinite;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    margin-left: 0;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Scanline Effect (subtle CRT effect) */
+.scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+            transparent 50%,
+            rgba(0, 0, 0, 0.05) 51%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes scanline {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .terminal-container {
+        margin: 1rem auto;
+        padding: 0 0.5rem;
+    }
+
+    .terminal-window {
+        min-height: 400px;
+        max-height: 60vh;
+        border-radius: 8px;
+    }
+
+    .terminal-body {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .terminal-header {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .terminal-title {
+        font-size: 0.75rem;
+    }
+
+    .control-btn {
+        width: 10px;
+        height: 10px;
+    }
+
+    .ls-output {
+        gap: 1rem;
+    }
+
+    .ls-item {
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .terminal-window {
+        min-height: 350px;
+        max-height: 55vh;
+    }
+
+    .terminal-body {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .ls-output {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .terminal-title {
+        display: none;
+    }
+}
+
+/* Accessibility */
+.terminal-input:focus {
+    outline: none;
+}
+
+/* Selection */
+::selection {
+    background: rgba(0, 255, 0, 0.3);
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background: rgba(0, 255, 0, 0.3);
+    color: #ffffff;
+}
+
+/* Loading animation for launch commands */
+@keyframes loading {
+    0% {
+        content: "⠋";
+    }
+
+    10% {
+        content: "⠙";
+    }
+
+    20% {
+        content: "⠹";
+    }
+
+    30% {
+        content: "⠸";
+    }
+
+    40% {
+        content: "⠼";
+    }
+
+    50% {
+        content: "⠴";
+    }
+
+    60% {
+        content: "⠦";
+    }
+
+    70% {
+        content: "⠧";
+    }
+
+    80% {
+        content: "⠇";
+    }
+
+    90% {
+        content: "⠏";
+    }
+}
